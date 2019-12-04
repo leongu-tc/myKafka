@@ -15,7 +15,7 @@ import java.util.Properties;
 public class ProducerDemo {
   static final String BROKER_LIST =
       Constants.KAFKA_SERVER_URL + ":" + Constants.KAFKA_SERVER_PORT;
-  static final String TOPIC = Constants.TOPIC;
+  static final String TOPIC = Constants.TOPIC1;
 
   public static void main(String[] args) throws Exception {
     KafkaProducer<Integer, String> producer = initProducer();
@@ -40,19 +40,19 @@ public class ProducerDemo {
   public static void sendOne(KafkaProducer<Integer, String> producer,
       String topic) throws InterruptedException {
     ProducerRecord<Integer, String> record1 =
-        new ProducerRecord<Integer, String>(topic, 31, "test 31");
+        new ProducerRecord<Integer, String>(topic, 31, "test " + Constants.currTimeStr());
     producer.send(record1);
     Thread.sleep(1000);
     ProducerRecord<Integer, String> record2 =
-        new ProducerRecord<Integer, String>(topic, 31, "test 32");
+        new ProducerRecord<Integer, String>(topic, 32, "test " + Constants.currTimeStr());
     producer.send(record2);
     Thread.sleep(1000);
     ProducerRecord<Integer, String> record3 =
-        new ProducerRecord<Integer, String>(topic, 31, "test 33");
+        new ProducerRecord<Integer, String>(topic, 33, "test " + Constants.currTimeStr());
     producer.send(record3);
     Thread.sleep(1000);
     ProducerRecord<Integer, String> record4 =
-        new ProducerRecord<Integer, String>(topic, 31, "test 34");
+        new ProducerRecord<Integer, String>(topic, 34, "test " + Constants.currTimeStr());
     producer.send(record4);
     Thread.sleep(1000);
     producer.close();
